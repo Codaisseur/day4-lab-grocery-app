@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Grocery app!</title>
     <link rel="stylesheet" href="grocery_app.css">
-    <link href="./libraries/mocha/mocha.css" rel="stylesheet" />
+    <link href="../libraries/mocha/mocha.css" rel="stylesheet" />
 </head>
 <body>
   <!-- YOUR HTML HERE -->
@@ -40,12 +40,11 @@
   <button onclick='mocha.checkLeaks(); mocha.run();'>Test my app!</button>
   <div id="mocha"></div>
 
-  <script src="./libraries/chai.js"></script>
-  <script src="./libraries/mocha/mocha.js"></script>
-  <script src="./libraries/sinon.js"></script>
+  <script src="../libraries/chai.js"></script>
+  <script src="../libraries/mocha/mocha.js"></script>
+  <script src="../libraries/sinon.js"></script>
   <script>mocha.setup('bdd')</script>
   <script src="YOUR_JAVASCRIPT_HERE.js"></script>
-  <script src="grocery_app.test.js"></script>
-  <!-- <script>mocha.checkLeaks(); mocha.run()</script> -->
+  <script src="../grocery_app.test.js"></script>
 </body>
 </html>

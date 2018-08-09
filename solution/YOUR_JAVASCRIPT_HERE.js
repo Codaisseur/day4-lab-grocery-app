@@ -1,23 +1,5 @@
 // Write your JS here
 
-const groceryItems = [
-  {
-    name: 'Oranges',
-    quantity: 0,
-    checked: true
-  }, 
-  {
-    name: 'Peaches',
-    quantity: 0,
-    checked: false
-  }, 
-  {
-    name: 'Dogfood',
-    quantity: 0,
-    checked: false
-  }
-]
-
 function createGroceryItemElement(name, quantity){
   const liItem = document.createElement('li')
 
