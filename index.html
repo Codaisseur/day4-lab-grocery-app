@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Grocery app!</title>
+    <link rel="stylesheet" href="grocery_app.css">
+    <link href="./libraries/mocha/mocha.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- YOUR HTML HERE -->
+
+  <div class="container">
+    <h1 class="bigTitle">Grocery List!</h1>
+    <ul id='groceryList'>
+      <li class='groceryItem'>
+        <input type="checkbox">
+        <label for="quantity">4</label>
+        <label for="name">apples</label>
+      </li>
+      <li class='groceryItem'>
+          <input type="checkbox">
+          <label for="quantity">4</label>
+          <label for="name">apples</label>
+      </li>
+    </ul>
+    <div class="footer">
+      Still to buy: <span id="todo-count">1</span> •
+      Bought: <span id="completed-count">0</span> •
+      Total: <span id="total-count">1</span>
+    </div>
+  </div>
+
+  <!-- I RECOMMEND YOU LEAVE THE REST UNTOUCHED -->
+  <button onclick='mocha.checkLeaks(); mocha.run();'>Test my app!</button>
+  <div id="mocha"></div>
+
+  <script src="./libraries/chai.js"></script>
+  <script src="./libraries/mocha/mocha.js"></script>
+  <script src="./libraries/sinon.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script src="YOUR_JAVASCRIPT_HERE.js"></script>
+  <script src="grocery_app.test.js"></script>
+  <script>mocha.checkLeaks(); mocha.run()</script>
+</body>
+</html>
