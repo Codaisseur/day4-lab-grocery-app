@@ -3,7 +3,7 @@
 // If you don't want to run the tests for a while comment all this code out.
 
 const { expect } = chai
-describe('Userstory 1: displaying a list of groceries (in the easiest possible way)', function(){
+describe('Userstory 1: displaying a list of groceries', function(){
   describe('displaying a list of grocery items', function(){
     it('There should be an unordered list with id \'groceryList\'', function(){
       const list = document.getElementById('groceryList')
@@ -36,35 +36,13 @@ describe('Userstory 1: displaying a list of groceries (in the easiest possible w
 })
 
 describe('Userstory 1: displaying a list of groceries (that is dynamically generated)', function(){
-  describe('The data model for the groceryApp', function(){
-    it(`The groceryItems in this app should be represented as an array, 
-      it should be assigned to a variable called \'groceryItems\'`, function(){
-        expect(sinon.match.defined.test(groceryItems)).to.equal(true)
-        expect(groceryItems, 'groceryItems is not an array').to.be.an('array')
-    })
-
-    it('the groceryItems should be an array of objects, it should contain at least three elements (for testing)', function(){
-      expect(groceryItems.length).to.gte(3)
-      groceryItems.forEach(function(item){
-        expect(item).to.be.an('object')
-      })
-    })
-
-    it('a groceryItem should contain the properties:\'quantity\' (number), \'name\' (string) and \'checked\' (boolean), ', function(){
-      groceryItems.forEach(function(item){
-        expect(item).to.have.keys(['name', 'quantity', 'checked'])
-      })
-    })
-  })
-
   describe('Should generate the list items based on the data', function(){
     describe('createGroceryItemElement', function(){
       it('There should be a function called createGroceryItemElement', function(){
         expect(sinon.match.defined.test(createGroceryItemElement)).to.equal(true)
       })
-      it(`It should take a groceryItem object as an argument (with quantity, name and checked properties)
-        and it should return a li HTML element`, function(){
-          const liElement = createGroceryItemElement({ quantity: 5, name: 'apples', checked: false})
+      it(`It should take a quantity and name as arguments and it should return a li HTML element`, function(){
+          const liElement = createGroceryItemElement({ quantity: 5, name: 'apples'})
           expect(liElement).to.not.equal(undefined)
           expect(liElement.tagName).to.equal('LI')
       })
@@ -80,34 +58,6 @@ describe('Userstory 1: displaying a list of groceries (that is dynamically gener
 
         const checkbox = children.find(child => child.tagName === 'INPUT' && child.type === 'checkbox')
         expect(checkbox).to.not.equal(undefined)
-      })
-
-      it(`The labels have innerText equal to the groceryItem object that was passed in`, function(){
-        const liElement = createGroceryItemElement({ quantity: 5, name: 'apples', checked: true})
-        const children = Array.from(liElement.children)
-        const nameLabel = children.find(child => child.tagName === 'LABEL' && child.htmlFor === 'name')
-        expect(nameLabel.innerText.includes('apples')).to.equal(true)
-
-        const quantityLabel = children.find(child => child.tagName === 'LABEL' && child.htmlFor === 'quantity')
-        expect(quantityLabel.innerText).to.equal('5')
-
-        const checkbox = children.find(child => child.tagName === 'INPUT' && child.type === 'checkbox')    
-        expect(checkbox.checked).to.equal(true)
-      })
-
-      it(`If the groceryItem object\'s check property is true, the checkbox should be checked and the listItem should have also have class \'bought if it is false the checkbox should be unchecked`, function(){
-        const liElementChecked = createGroceryItemElement({ quantity: 5, name: 'apples', checked: true})
-        const childrenChecked = Array.from(liElementChecked.children)
-
-        const checkboxChecked = childrenChecked.find(child => child.tagName === 'INPUT' && child.type === 'checkbox')    
-        expect(liElementChecked.className.includes('bought')).to.equal(true)
-        expect(checkboxChecked.checked).to.equal(true)
-
-        const liElementUnchecked = createGroceryItemElement({ quantity: 5, name: 'apples', checked: false})
-        const childrenUnchecked = Array.from(liElementUnchecked.children)
-
-        const checkboxUnchecked = childrenUnchecked.find(child => child.tagName === 'INPUT' && child.type === 'checkbox')    
-        expect(checkboxUnchecked.checked).to.equal(false)
       })
     })
 
