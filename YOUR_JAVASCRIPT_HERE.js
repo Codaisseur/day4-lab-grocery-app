@@ -18,41 +18,27 @@ const groceryItems = [
   }
 ]
 
-function createGroceryItemElement(groceryItem){
+function createGroceryItemElement(name, quantity){
   const liItem = document.createElement('li')
-  groceryItem.checked ? liItem.className = 'groceryItem bought' : liItem.className = 'groceryItem'
 
   const checkBox = document.createElement('input')
   checkBox.setAttribute("type", "checkbox")
-  checkBox.checked = groceryItem.checked
+  checkBox.checked = false
   checkBox.onchange = toggleBought
 
   const quantityLabel = document.createElement('label')
   quantityLabel.setAttribute("for", "quantity")
-  quantityLabel.innerText = groceryItem.quantity
+  quantityLabel.innerText = quantity
 
   const nameLabel = document.createElement('label')
   nameLabel.setAttribute("for", "name")
-  nameLabel.innerText = groceryItem.name
+  nameLabel.innerText = name
   
   liItem.appendChild(checkBox)
   liItem.appendChild(quantityLabel)
   liItem.appendChild(nameLabel)
   
   return liItem
-}
-
-function displayGroceryList() {
-  const list = document.getElementById('groceryList')
-
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-
-  groceryItems.forEach(function(item){
-    const listElement = createGroceryItemElement(item)
-    list.appendChild(listElement)
-  })
 }
 
 function toggleBought(event){
@@ -63,4 +49,12 @@ function toggleBought(event){
   } else {
     event.target.parentElement.className = 'groceryItem'  
   }
+}
+
+function submitGroceryItem(){
+  const newItemName = document.getElementById('itemName').value
+  const newItemQuantity = document.getElementById('itemQuantity').value
+  
+  const listItem = createGroceryItemElement(newItemName, newItemQuantity)
+  document.getElementById('groceryList').appendChild(listItem)
 }

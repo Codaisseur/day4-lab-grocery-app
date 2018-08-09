@@ -10,16 +10,23 @@
 
   <div class="container">
     <h1 class="bigTitle">Grocery List!</h1>
+    <form onsubmit="submitGroceryItem(); return false;">
+      <label>type</label>
+      <input type="text" id="itemName" placeholder="What needs to be bought?">
+      <label>quantity</label>
+      <input type="number" id="itemQuantity" placeholder="how many">
+      <input type="submit">
+    </form>
     <ul id='groceryList'>
       <li class='groceryItem'>
-        <input type="checkbox">
+        <input onchange="toggleBought(event)" type="checkbox">
         <label for="quantity">4</label>
         <label for="name">apples</label>
       </li>
       <li class='groceryItem'>
-          <input type="checkbox">
-          <label for="quantity">4</label>
-          <label for="name">apples</label>
+        <input onchange="toggleBought(event)" type="checkbox">
+        <label for="quantity">4</label>
+        <label for="name">apples</label>
       </li>
     </ul>
     <div class="footer">
@@ -39,6 +46,6 @@
   <script>mocha.setup('bdd')</script>
   <script src="YOUR_JAVASCRIPT_HERE.js"></script>
   <script src="grocery_app.test.js"></script>
-  <script>mocha.checkLeaks(); mocha.run()</script>
+  <!-- <script>mocha.checkLeaks(); mocha.run()</script> -->
 </body>
 </html>

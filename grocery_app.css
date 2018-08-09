@@ -18,7 +18,7 @@ form {
   padding: 0 0 20px;
 }
 
-input#new-item {
+input#newGroceryItem {
   display: block;
   width: 478px;
   border-radius: 3px;
